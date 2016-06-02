@@ -20,5 +20,5 @@ django.setup()
 
 for i in range(10):
     sl = randint(5, 15)
-    ar.objects.create(title = 'Hello,' + str(sl), category = 'Python', content = str(sl))
+    ar.objects.create(title = 'Hello,' + str(sl), category = 'Python', content =  u'哈哈')
     time.sleep(sl)
