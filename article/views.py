@@ -22,3 +22,11 @@ def home(request):
     except Exception as e:
         print e
     return render(request, 'home.html', {"post_list": post_list})
+
+def archives(request):
+    try:
+        post_list = Article.objects.all()
+    except Exception,e:
+        print e
+
+    return render(request, 'archives.html', {'post_list': 'post_list', 'error': False})
