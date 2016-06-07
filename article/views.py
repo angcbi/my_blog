@@ -29,4 +29,4 @@ def archives(request):
     except Exception,e:
         print e
 
-    return render(request, 'archives.html', {'post_list': 'post_list', 'error': False})
+    return render(request, 'archives.html', {'post_list': post_list, 'error': False})
