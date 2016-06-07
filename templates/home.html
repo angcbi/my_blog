@@ -2,19 +2,21 @@
 {% block content %}
 <div class="posts">
     {% for post in post_list %}
-        <section class="post">
-            <header class="post-header">
-                <h2 clas="post-title">{{ post.title }}</h2>
-                <p class="post-meta">
-                Time: <a href="#" class="post-author">{{ post.date_time }}</a>
-                </p>
-            </header>
-            <div class="post-description">
-                <p>
-                {{ post.content }}
-                </p>
-            </div>
-        </section>
+    <section class="post">
+        <header class="post-header">
+            <h2 clas="post-title"><a href="{% url "detail" id=post.id%}">{{post.title}}</a></h2>
+            <p class="post-meta">
+            Time: <a href="#" class="post-author">{{ post.date_time }}</a>
+            <a href="#" class="post-cagetory post-category-js">{{post.category}}</a>
+            </p>
+        </header>
+        <div class="post-description">
+            <p>
+            {{ post.content }}
+            </p>
+            <a href="{% url "detail" id=post.id %}" class="pure-button button-primary-button">查看详情</a>
+        </div>
+    </section>
     {% endfor %}
 </div>
 {% endblock %}

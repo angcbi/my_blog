@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import Http404
 from django.utils.encoding import smart_str
 from article.models import Article
 
@@ -7,10 +8,13 @@ from article.models import Article
 def home(request):
     return HttpResponse("Hello, World")
 
-def detail(request, my_args):
-    post = Article.objects.all()[int(my_args)]
-    str = u'title = {}, category = {}, date_time = {}, content = {}'.format(post.title, post.category, post.date_time, post.content)
-    return HttpResponse(str)
+def detail(request, id):
+    try:
+        post = Article.objects.get(id=id)
+    except Article.DoesNotExist:
+        raise Http404
+    return render(request, 'post.html', {'post': post})
+
 
 def home(request):
     try:
