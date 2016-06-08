@@ -1,13 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import Http404
-from django.utils.encoding import smart_str
+from django.contrib.syndication.views import Feed
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from article.models import Article
 
 # Create your views here.
-def home(request):
-    return HttpResponse("Hello, World")
-
 def detail(request, id):
     try:
         post = Article.objects.get(id=id)
@@ -17,10 +15,16 @@ def detail(request, id):
 
 
 def home(request):
+    posts = Article.objects.all()
+    paginator = Paginator(posts, 2)
+    page = request.GET.get('page')
     try:
-        post_list = Article.objects.all()
-    except Exception as e:
-        print e
+        post_list = paginator.page(page)
+    except PageNotAnInteger:
+        post_list = paginator.page(1)
+    except EmptyPage:
+        post_list = paginator.paginator(paginator.num_pages)
+
     return render(request, 'home.html', {"post_list": post_list})
 
 def archives(request):
@@ -41,3 +45,22 @@ def search_tag(request, tag):
         raise Http404
 
     return render(request, 'tag.html', {'post_list': post_list})
+
+class RSSFeed(Feed):
+    title = "RSS feed - article"
+    link = "feeds/posts/"
+    description = 'Rss fedd - blog posts'
+
+    def items(self):
+        return Article.objects.order_by('-date_time')
+
+    def item_title(self, item):
+        return item.title
+
+    def item_pubdate(self, item):
+        return item.date_time
+
+    def item_description(self, item):
+        return item.content
+
+
