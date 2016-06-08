@@ -27,8 +27,9 @@
             {% if post_list.has_previous %} 
             <li><a href="?page={{post_list.previous_page_number }}">上一页</a></li>
             {% endif %}
-            
-            {% if post_list.has_next %} 
+            <li>page {{ post_list.number }}&nbsp;of&nbsp;{{post_list.paginator.num_pages}}
+</li>
+                    {% if post_list.has_next %} 
             <li><a href="?page={{post_list.next_page_number }}">上一页</a></li>
             {% endif %}
         </ul>
