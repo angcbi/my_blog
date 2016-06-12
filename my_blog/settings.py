@@ -19,7 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'gdwij-7+zc%73h2yjysrmc++5)&68(jw47t+8yi7syq%0*6hmd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
@@ -27,7 +27,7 @@ TEMPLATE_DIRS = {
         os.path.join(BASE_DIR, 'templates')
         }
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS =  ['*']
 
 
 # Application definition
@@ -60,6 +60,8 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'my_blog.urls'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 WSGI_APPLICATION = 'my_blog.wsgi.application'
 
