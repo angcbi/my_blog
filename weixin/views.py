@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # encoding:utf-8
 
+imporet json
 from django.shortcuts import render
 from django.http import HttpResponse
 from utils import check_Signature
@@ -15,4 +16,4 @@ def checkSignature(request):
     if check_Signature(signature=signature, timestamp=timestamp, nonce=nonce):
         return HttpResponse(echostr)
 
-    print request.POST
+    return HttpResponse(json.dumps(request.POST))
