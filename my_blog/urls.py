@@ -10,4 +10,6 @@ urlpatterns = patterns('',
     url(r'^tag(?P<tag>\w+)/$', 'article.views.search_tag', name='search_tag'),
     url(r'^about_me/$', 'article.views.about_me', name='about_me'),
     url(r'^feed/$', RSSFeed(), name='RSS'),
+
+    url(r'^weixin/$', 'weixin.views.checkSignature', name='weixin'),
 )
