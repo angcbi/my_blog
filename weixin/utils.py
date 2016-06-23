@@ -63,14 +63,14 @@ def parseXml(data):
 
 def tuling(content, userid=None, location=u'beijing'):
     text, url = '', ''
-    url = 'http://www.tuling123.com/openapi/api'
+    tulingurl = 'http://www.tuling123.com/openapi/api'
     data = {
             'key': 'e092df54d2067d1c9fe5d317138c0385',
             'info': content,
             'loc': location,
             'userid': userid
             }
-    r = requests.get(url, params=data)
+    r = requests.get(tulingurl, params=data)
     print r.content
     code = r.json().get('code')
     text = r.json().get('text')

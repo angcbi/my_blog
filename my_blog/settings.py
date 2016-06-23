@@ -19,11 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'gdwij-7+zc%73h2yjysrmc++5)&68(jw47t+8yi7syq%0*6hmd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-<<<<<<< HEAD
 DEBUG = True
-=======
-DEBUG = True 
->>>>>>> 54a4d015608959895481b23fc77287e92df0612f
 
 TEMPLATE_DEBUG = True
 
@@ -75,7 +71,6 @@ WSGI_APPLICATION = 'my_blog.wsgi.application'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
-<<<<<<< HEAD
 #    'default': {
 #        'ENGINE': 'django.db.backends.sqlite3',
 #        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
@@ -86,15 +81,6 @@ DATABASES = {
         'USER': 'cc',
         'PASSWORD': '123456',
         'NAME': 'my_blog',
-=======
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'HOST': 'wanggang.mysql.pythonanywhere-services.com',
-        'USER': 'wanggang',
-        'PASSWORD': 'caicai123',
-        'NAME': 'wanggang$my_blog',
->>>>>>> 54a4d015608959895481b23fc77287e92df0612f
-        'PORT': '3306',
     }
 }
 
