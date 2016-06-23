@@ -5,10 +5,7 @@ import requests
 import time
 import hashlib
 import traceback
-<<<<<<< HEAD
-=======
 import json
->>>>>>> 54a4d015608959895481b23fc77287e92df0612f
 import xml.etree.cElementTree as et
 
 def check_Signature(signature, timestamp, nonce):
@@ -18,14 +15,9 @@ def check_Signature(signature, timestamp, nonce):
     L = [timestamp, nonce, token]
     L.sort()
 
-<<<<<<< HEAD
-    code = reduce(lambda x,y : str(x)+str(y), L)
-    hashcode = hashlib.md5(code).hexdigest
-=======
     sha1 = hashlib.sha1()
     map(sha1.update, L)
     hashcode =sha1.hexdigest()
->>>>>>> 54a4d015608959895481b23fc77287e92df0612f
 
     if hashcode == signature:
         return True
@@ -69,8 +61,6 @@ def parseXml(data):
 
     return ret
 
-<<<<<<< HEAD
-=======
 def tuling(content, userid=None, location=u'beijing'):
     text, url = '', ''
     url = 'http://www.tuling123.com/openapi/api'
@@ -79,17 +69,16 @@ def tuling(content, userid=None, location=u'beijing'):
             'info': content,
             'loc': location,
             'userid': userid
-            } 
+            }
     r = requests.get(url, params=data)
     print r.content
     code = r.json().get('code')
     text = r.json().get('text')
-    
+
     if code == '200000':
         url = r.json().get('url')
 
     return text, url
->>>>>>> 54a4d015608959895481b23fc77287e92df0612f
 
 
 if __name__ == '__main__':
