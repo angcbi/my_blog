@@ -1,4 +1,7 @@
 *.sqlite3
 *.pyc
 migrations/
+<<<<<<< HEAD
 static/
+=======
+>>>>>>> 54a4d015608959895481b23fc77287e92df0612f
