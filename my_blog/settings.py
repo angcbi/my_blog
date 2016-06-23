@@ -10,7 +10,6 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-import socket
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
@@ -20,8 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'gdwij-7+zc%73h2yjysrmc++5)&68(jw47t+8yi7syq%0*6hmd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-print socket.gethostname()
+DEBUG = True 
 
 TEMPLATE_DEBUG = True
 
@@ -73,16 +71,12 @@ WSGI_APPLICATION = 'my_blog.wsgi.application'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#    }
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': '127.0.0.1',
-        'USER': 'cc',
-        'PASSWORD': '123456',
-        'NAME': 'my_blog',
+        'HOST': 'wanggang.mysql.pythonanywhere-services.com',
+        'USER': 'wanggang',
+        'PASSWORD': 'caicai123',
+        'NAME': 'wanggang$my_blog',
         'PORT': '3306',
     }
 }
