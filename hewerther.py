@@ -111,11 +111,11 @@ def parsedata(data):
             spd = item.get('wind', {}).get('spd', '')
             date = item.get('date')
 
-    print  u'{}{},天气：{}，温度：{}℃，风力：{}，降雨量：{}mm；明天白天：{}，晚上：{}，气温：{}-{}℃，降水概率：{}%，降水量：{}mm。【天气助手】'.\
-        format(time, city, txt, tmp, sc, pcpn_now, txt_d, txt_d, tmp_min, tmp_max, pop, popn)
+    print u'{}{}，天气：{}，温度：{}℃，风力：{}，降雨量：{}；明日白天：{}，晚上：{}，气温：{}，降水概率：{}，降水量：{}。【天气助手】'.\
+        format(datetime.datetime.strftime(datetime.datetime.strptime(time, '%Y-%m-%d %H:%M'), '%m/%d'), city, txt, tmp, sc, pcpn_now, txt_d, txt_d, tmp_min, tmp_max, pop, popn)
 
-    return  '{}{},天气：{}，温度：{}℃，风力：{}，降雨量：{}mm；明天白天：{}，晚上：{}，气温：{}-{}℃，降水概率：{}%，降水量：{}mm。【天气助手】'.\
-        format(time, city, txt, tmp, sc, pcpn_now, txt_d, txt_d, tmp_min, tmp_max, pop, popn)
+    return u'{}{}，天气：{}，温度：{}℃，风力：{}，降雨量：{}；明日白天：{}，晚上：{}，气温：{}，降水概率：{}，降水量：{}。【天气助手】'.\
+        format(datetime.datetime.strftime(datetime.datetime.strptime(time, '%Y-%m-%d %H:%M'), '%m/%d'), city, txt, tmp, sc, pcpn_now, txt_d, txt_d, tmp_min, tmp_max, pop, popn)
 
 def weather(city, key='84b9f014191c4257bb31edd4fa5b1837'):
     cityId = getCityId(city, key)
@@ -128,7 +128,7 @@ def weather(city, key='84b9f014191c4257bb31edd4fa5b1837'):
     try:
         r = requests.get(url, params=params)
         content = parsedata(r.json())
-        sendSms(content)
+        #sendSms(content)
 
     except Exception, e:
         print e
@@ -138,7 +138,7 @@ def sendSms(content):
     params = {
         'appkey':'8de49e132e8a53da',
         'mobile':'18500612841',
-        'content': content
+        'content': content.encode('utf-8')
     }
     url = 'http://api.jisuapi.com/sms/send'
     try:
