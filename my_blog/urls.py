@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from article.views import RSSFeed
+from httpproxy.views import HttpProxy
 
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
@@ -12,4 +13,5 @@ urlpatterns = patterns('',
     url(r'^feed/$', RSSFeed(), name='RSS'),
 
     url(r'^weixin/$', 'weixin.views.checkSignature', name='weixin'),
+                       url(r'^proxy/(?P<url>.*)$', HttpProxy.as_view(base_url='http://whoknows.tk')),
 )
